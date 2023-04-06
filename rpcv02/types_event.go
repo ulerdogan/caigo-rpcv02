@@ -19,7 +19,7 @@ type EmittedEvent struct {
 	TransactionHash types.Hash `json:"transaction_hash"`
 }
 
-type EventFilter struct {
+type EventsInput struct {
 	// FromBlock from block
 	FromBlock BlockID `json:"from_block"`
 	// ToBlock to block
@@ -27,12 +27,10 @@ type EventFilter struct {
 	// Address from contract
 	Address types.Hash `json:"address,omitempty"`
 	// Keys the values used to filter the events
-	Keys []string `json:"keys,omitempty"`
-}
+	Keys              []string `json:"keys,omitempty"`
 
-type EventsInput struct {
-	EventFilter       EventFilter
-	ResultPageRequest ResultPageRequest
+	ContinuationToken *string  `json:"continuation_token,omitempty"`
+	ChunkSize         int      `json:"chunk_size"`
 }
 
 type EventsOutput struct {

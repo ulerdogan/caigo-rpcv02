@@ -256,7 +256,7 @@ func mock_starknet_getEvents(result interface{}, method string, args ...interfac
 	if len(args) != 1 {
 		return errWrongArgs
 	}
-	query, ok := args[0].(EventFilter)
+	query, ok := args[0].(EventsInput)
 	if !ok {
 		return errWrongArgs
 	}

@@ -10,7 +10,7 @@ func TestEvents(t *testing.T) {
 	testConfig := beforeEach(t)
 
 	type testSetType struct {
-		eventFilter        EventFilter
+		eventFilter        EventsInput
 		ExpectedEventCount int
 	}
 	testSet := map[string][]testSetType{
@@ -40,9 +40,7 @@ func TestEvents(t *testing.T) {
 	for _, test := range testSet {
 		spy := NewSpy(testConfig.provider.c)
 		testConfig.provider.c = spy
-		eventInput := EventsInput{
-			EventFilter: test.eventFilter,
-		}
+		eventInput := test.eventFilter
 		events, err := testConfig.provider.Events(context.Background(), eventInput)
 		if err != nil {
 			t.Fatal(err)
