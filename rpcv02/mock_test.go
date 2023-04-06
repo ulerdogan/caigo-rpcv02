@@ -264,7 +264,7 @@ func mock_starknet_getEvents(result interface{}, method string, args ...interfac
 		Events: []EmittedEvent{
 			{BlockHash: types.HexToHash("0xdeadbeef"),
 				Event: Event{
-					FromAddress: query.Address,
+					FromAddress: *query.Address,
 				},
 				BlockNumber:     1,
 				TransactionHash: types.HexToHash("0xdeadbeef"),
